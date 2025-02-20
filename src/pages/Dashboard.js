@@ -16,8 +16,8 @@ const Dashboard = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold">Garbage Bin Status</h1>
       <GarbageList garbageData={data} />
+      
     </div>
   );
 };
