@@ -13,7 +13,6 @@ const Dashboard = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading data: {error}</p>;
-
   return (
     <div className="p-4">
       <GarbageList garbageData={data} />
