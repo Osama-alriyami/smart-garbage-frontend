@@ -1,19 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation(); // Get current route
+
   return (
-    <div class="navbar bg-base-100 bg-neutral text-neutral-content">
-    <div class="flex-1">
-      <a class="btn btn-ghost text-xl">Smart Grabage</a>
-    </div>
-    <div class="flex-none">
-      <ul class="menu menu-horizontal px-1">
-        <li> <Link className="mx-4 px-3 py-2 rounded-md text-white hover:text-gray-300 focus:bg-white focus:text-black active:bg-white active:text-black" to="/">Dashboard</Link></li>
-        <li><Link className="mx-4 px-3 py-2 rounded-md text-white hover:text-gray-300 focus:bg-white focus:text-black active:bg-white active:text-black" to="/add" >Add Garbage</Link></li>
-      </ul>
-    </div>
-  </div>
+    <nav className="navbar bg-neutral text-white px-4 py-3 flex items-center justify-between">
+      {/* Logo */}
+      <div className="text-lg font-bold whitespace-nowrap">
+        Smart Garbage
+      </div>
+
+      {/* Navigation Links (Wrapped in a flex container) */}
+      <div className="flex gap-3">
+        <Link
+          to="/"
+          className={`px-3 py-2 rounded-md text-sm ${
+            location.pathname === "/" ? "bg-white text-black font-bold" : "hover:bg-gray-700 hover:text-white"
+          }`}
+        >
+          Dashboard
+        </Link>
+        <Link
+          to="/add"
+          className={`px-3 py-2 rounded-md text-sm ${
+            location.pathname === "/add" ? "bg-white text-black font-bold" : "hover:bg-gray-700 hover:text-white"
+          }`}
+        >
+          Add Garbage
+        </Link>
+      </div>
+    </nav>
   );
 };
 
