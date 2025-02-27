@@ -7,3 +7,11 @@
       @apply w-full h-full overflow-x-hidden;
     }
   }
+
+  @layer base {
+    * {
+      @apply transition-none;
+    }
+  }
+  
+  
