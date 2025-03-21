@@ -23,16 +23,14 @@ const GarbageCard = ({ bin, onClick }) => {
       ? "text-yellow-500"
       : "text-red-500";
 
-  const showFullBadge = latestReading.level > 85;
-  const showHeavyBadge = latestReading.weight > 15;
+  const showFullBadge = latestReading.level >= 85;
+  const showHeavyBadge = latestReading.weight >= 15;
 
   return (
     <div
       onClick={() => onClick(bin)}
       className="relative card bg-base-100 w-[300px] md:w-[350px] lg:w-[400px] bg-white shadow-lg rounded-lg p-4 border border-neutral-500 cursor-pointer hover:shadow-xl transition"
     >
-  {/* 🚩 Dynamic Badge (Top-Left) */}
-{/* 🚩 Dynamic Multi-Badges (Top-Left) */}
 <div className="absolute top-2 left-2 z-10 flex flex-col gap-1">
   {latestReading.level >= 90 && (
     <div className="badge badge-error flex items-center gap-1 px-2 py-1 text-sm">
