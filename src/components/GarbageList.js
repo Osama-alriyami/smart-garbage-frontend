@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import GarbageCard from "./GarbageCard";
+import BinGraphModal from "./BinGraphModal";
 
 const GarbageList = ({ garbageData }) => {
+  const [selectedBin, setSelectedBin] = useState(null);
+
   return (
-    <div className="flex justify-center items-center w-full min-h-screen">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {garbageData.length > 0 ? (
-        garbageData.map((bin) => <GarbageCard key={bin._id} bin={bin} />)
-      ) : (
-        <p className="text-center col-span-3">No data available</p>
-      )}
+    <div>
+      <div className="flex flex-wrap justify-center gap-6">
+        {garbageData.map(bin => (
+          <GarbageCard key={bin._id} bin={bin} onClick={setSelectedBin} />
+        ))}
       </div>
+
+      {selectedBin && (
+        <BinGraphModal bin={selectedBin} onClose={() => setSelectedBin(null)} />
+      )}
     </div>
-    
   );
 };
 

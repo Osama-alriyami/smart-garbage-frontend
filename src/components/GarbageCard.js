@@ -2,7 +2,7 @@ import React from "react";
 
 const binImage = process.env.PUBLIC_URL + "/images/bin.png";
 
-const GarbageCard = ({ bin }) => {
+const GarbageCard = ({ bin, onClick  }) => {
   // Get latest reading
   const latestReading = bin.readings?.[bin.readings.length - 1];
 
@@ -25,7 +25,7 @@ const GarbageCard = ({ bin }) => {
       : "text-red-500";
 
   return (
-    <div className="card bg-base-100 w-[300px] md:w-[350px] lg:w-[400px] bg-white shadow-lg rounded-lg p-4 border border-neutral-500">
+    <div  onClick={() => onClick(bin)} className="card bg-base-100 w-[300px] md:w-[350px] lg:w-[400px] bg-white shadow-lg rounded-lg p-4 border border-neutral-500">
       {/* Garbage Bin Image with Radial Progress Inside */}
       <div className="relative flex justify-center items-center mt-4">
         {/* Bin Image */}
