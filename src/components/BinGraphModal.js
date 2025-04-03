@@ -10,7 +10,8 @@ const BinGraphModal = ({ bin, onClose }) => {
 
   const data = bin.readings.map(r => ({
     ...r,
-    timestamp: new Date(r.timestamp).toLocaleString(),
+    timestamp: new Date(r.timestamp).toLocaleString('en-US', { timeZone: 'America/Denver' }),
+
   }));
 
   return (
