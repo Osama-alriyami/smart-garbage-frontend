@@ -17,6 +17,14 @@ const categories = [
   "predicted_level",
 ];
 
+const yAxisDomainMap = {
+  weight: [0, 30],
+  predicted_weight: [0, 30],
+  level: [0, 100],
+  predicted_level: [0, 100],
+  battery: [0, 100],
+};
+
 const MS_IN_DAY = 24 * 60 * 60 * 1000;
 
 const BinGraphModal = ({ bin, onClose }) => {
@@ -29,12 +37,10 @@ const BinGraphModal = ({ bin, onClose }) => {
   const startDate = new Date(now.getTime() - (startOffsetDays + 7) * MS_IN_DAY);
   const endDate = new Date(now.getTime() - startOffsetDays * MS_IN_DAY);
 
-  // Prepare regular readings
   const readings = (bin.readings || [])
     .map((r) => ({ ...r, timestamp: new Date(r.timestamp) }))
     .sort((a, b) => a.timestamp - b.timestamp);
 
-  // Prepare ML readings
   const mlReadings = (bin.ML_output || [])
     .map((r) => ({ ...r, timestamp: new Date(r.timestamp) }))
     .sort((a, b) => a.timestamp - b.timestamp);
@@ -99,7 +105,7 @@ const BinGraphModal = ({ bin, onClose }) => {
           <LineChart data={filteredData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="timestamp" tick={{ fontSize: 10 }} />
-            <YAxis />
+            <YAxis domain={yAxisDomainMap[activeTab]} />
             <Tooltip />
             <Line
               type="monotone"
