@@ -41,8 +41,13 @@ const BinGraphModal = ({ bin, onClose }) => {
     .map((r) => ({ ...r, timestamp: new Date(r.timestamp) }))
     .sort((a, b) => a.timestamp - b.timestamp);
 
-  const mlReadings = (bin.ML_output || [])
-    .map((r) => ({ ...r, timestamp: new Date(r.timestamp) }))
+    const mlReadings = (bin.ML_output || [])
+    .map((r) => ({
+      ...r,
+      timestamp: new Date(r.timestamp),
+      predicted_weight: r.predicted_weight != null ? Math.round(r.predicted_weight) : undefined,
+      predicted_level: r.predicted_level != null ? Math.round(r.predicted_level) : undefined,
+    }))
     .sort((a, b) => a.timestamp - b.timestamp);
 
   const isPrediction = activeTab.startsWith("predicted_");
