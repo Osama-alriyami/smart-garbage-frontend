@@ -52,7 +52,7 @@ const GarbageCard = ({ bin, onClick }) => {
     </div>
   )}
 
-  {latestReading.level >= 70 && latestReading.level < 85 && (
+  {latestReading.level >= 60 && latestReading.level < 85 && (
     <div className="badge badge-warning flex items-center gap-1 px-2 py-1 text-sm">
       <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
         <g fill="currentColor">
@@ -80,7 +80,7 @@ const GarbageCard = ({ bin, onClick }) => {
     </div>
   )}
 
-  {latestReading.weight >= 8 && latestReading.weight < 15 && (
+  {latestReading.weight >= 7 && latestReading.weight < 15 && (
     <div className="badge badge-warning flex items-center gap-1 px-2 py-1 text-sm">
       <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
         <g fill="currentColor">
