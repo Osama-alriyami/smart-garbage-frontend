@@ -21,14 +21,6 @@ const Navbar = () => {
         >
           Dashboard
         </Link>
-        <Link
-          to="/add"
-          className={`px-3 py-2 rounded-md text-sm ${
-            location.pathname === "/add" ? "bg-white text-black font-bold" : "hover:bg-gray-700 hover:text-white"
-          }`}
-        >
-          Add Garbage
-        </Link>
       </div>
     </nav>
   );
